@@ -16,6 +16,8 @@
     <p><%= f.text_field :height, placeholder: 'Высота' %></p>
     <p><%= f.text_field :length, placeholder: 'Длина' %></p>
     <p><%= f.text_field :weight, placeholder: 'Общий вес' %></p>
+    <%= f.hidden_field :coordinates_from %>
+    <%= f.hidden_field :coordinates_to %>
 
     <%= f.submit %>
   </div>

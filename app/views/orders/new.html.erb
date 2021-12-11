@@ -1,7 +1,8 @@
 <h1>Новый заказ</h1>
 
+<div class="form">
+  <%= render 'form', order: @order %>
+  <%= link_to 'Back', orders_path %>
+</div>
 
-
-<%= render 'form', order: @order %>
-
-<%= link_to 'Back', orders_path %>
+<div id="map"></div>

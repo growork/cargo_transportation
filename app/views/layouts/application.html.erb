@@ -2,11 +2,20 @@
 <html>
   <head>
     <title>CargoTransportation</title>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=0af0f061-4e45-4e7f-8565-5e708931346d&lang=ru_RU"
+            type="text/javascript">
+    </script>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <% if action_name == 'new' %>
+      <%= javascript_pack_tag 'application', 'new', 'data-turbolinks-track': 'reload' %>
+    <% else %>
+      <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <% end %>
+
   </head>
 
   <body>
