@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  width: 1.5
+  height: 1.5
+  length: 1.5
+  overall_volume: 1.5
+  coordinates_from: 1.5
+  coordinates_to: 1.5
+  distance: 1
+  price: 1
+
+two:
+  width: 1.5
+  height: 1.5
+  length: 1.5
+  overall_volume: 1.5
+  coordinates_from: 1.5
+  coordinates_to: 1.5
+  distance: 1
+  price: 1
