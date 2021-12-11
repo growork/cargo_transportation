@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
   root 'orders#index'
 
-  resources :orders
+  resources :orders, only: [:index, :new, :show]
 end
