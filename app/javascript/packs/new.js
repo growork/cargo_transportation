@@ -44,6 +44,7 @@ function init() {
             if (activeRoute) {
                 // Получим протяженность маршрута.
                 var length = route.getActiveRoute().properties.get("distance");
+                document.querySelector('#order_distance').value = Math.round(length.value / 1000);
 
                 document.querySelector('#order_coordinates_from').value = routePanelControl.routePanel.state.get("from");
                 document.querySelector('#order_coordinates_to').value = routePanelControl.routePanel.state.get("to");
@@ -55,6 +56,7 @@ function init() {
     });
 
     // Вычисление общего объёма груза
+    // Получение коллекции элементов (длина, ширина, высота)
     var elements = document.querySelectorAll('.elem-for-calculate-volume');
 
     // Проверка длины, ширины и высоты (целое число и не пустая строка)
