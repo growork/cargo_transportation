@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_10_221520) do
+ActiveRecord::Schema.define(version: 2021_12_12_220307) do
 
   create_table "orders", force: :cascade do |t|
     t.float "width"
     t.float "height"
     t.float "length"
     t.float "overall_volume"
-    t.float "coordinates_from"
-    t.float "coordinates_to"
+    t.string "coordinates_from"
+    t.string "coordinates_to"
     t.integer "distance"
     t.integer "price"
     t.datetime "created_at", precision: 6, null: false
