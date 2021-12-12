@@ -12,13 +12,24 @@
   <% end %>
 
   <div class="actions">
-    <p><%= f.text_field :width, placeholder: 'Ширина' %></p>
-    <p><%= f.text_field :height, placeholder: 'Высота' %></p>
-    <p><%= f.text_field :length, placeholder: 'Длина' %></p>
-    <p><%= f.text_field :weight, placeholder: 'Общий вес' %></p>
+    <%= f.label :width, 'Ширина, м' %>
+    <p><%= f.number_field :width, class: 'elem-for-calculate-volume', placeholder: '0', min: 0.01, step: '0.01', required: true %></p>
+
+    <%= f.label :height, 'Высота, м' %>
+    <p><%= f.number_field :height, class: 'elem-for-calculate-volume', placeholder: '0', min: 0.01, step: '0.01', required: true %></p>
+
+    <%= f.label :length, 'Длина, м' %>
+    <p><%= f.number_field :length, class: 'elem-for-calculate-volume', placeholder: '0', min: 0.01, step: '0.01', required: true %></p>
+
+    <%= f.label :overall_volume, 'Общий объём, м<sup>3</sup>'.html_safe %>
+    <p><%= f.number_field :overall_volume, placeholder: '0', disabled: true %></p>
+
+    <%= f.label :weight, 'Общий вес, кг' %>
+    <p><%= f.number_field :weight, placeholder: '0', min: 0.01, step: '0.01', required: true %></p>
+
     <%= f.hidden_field :coordinates_from %>
     <%= f.hidden_field :coordinates_to %>
 
-    <%= f.submit %>
+    <%= f.submit 'Рассчитать', id: 'submit', disabled: true %>
   </div>
 <% end %>

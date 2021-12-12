@@ -45,10 +45,33 @@ function init() {
                 // Получим протяженность маршрута.
                 var length = route.getActiveRoute().properties.get("distance");
 
-                document.getElementById('order_coordinates_from').value = routePanelControl.routePanel.state.get("from");
-                document.getElementById('order_coordinates_to').value = routePanelControl.routePanel.state.get("to")
+                document.querySelector('#order_coordinates_from').value = routePanelControl.routePanel.state.get("from");
+                document.querySelector('#order_coordinates_to').value = routePanelControl.routePanel.state.get("to");
+                document.querySelector('#submit').removeAttribute('disabled')
+
             }
         });
 
     });
+
+    // Вычисление общего объёма груза
+    var elements = document.querySelectorAll('.elem-for-calculate-volume');
+
+    // Проверка длины, ширины и высоты (целое число и не пустая строка)
+    for (var i = 0; i < elements.length; i++) {
+        elements[i].oninput = function() {
+            if (
+                (/^\d{1,}(.\d{1,})?$/.test(elements[0].value) &&
+                 /^\d{1,}(.\d{1,})?$/.test(elements[1].value) &&
+                 /^\d{1,}(.\d{1,})?$/.test(elements[2].value))
+            ) {
+                document.querySelector('#order_overall_volume').value = Math.round(Number(elements[0].value) * Number(elements[1].value) * Number(elements[2].value))
+            } else {
+                document.querySelector('#order_overall_volume').value = ''
+
+            }
+        }
+    }
 }
+
+
