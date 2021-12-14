@@ -1,24 +1,14 @@
-# README
+#Тестовое задание
+Вариант 1
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Реализовать форму расчета стоимости
 
-Things you may want to cover:
+Длина, Ширина, Высота (м)
+Общий объем (м3)
+Общий вес (кг)
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Поля должны валидироваться как на клиенте, так и на сервере.
+Для расчета расстояния между городами можно использовать API Яндекс карт или любое другое.
+Результат должен считаться по формуле Price = 500 + (Расстояние_между_городами * Сумма_остальных_аттрибутов). Форматы ответа: JSON и HTML.
+История поиска вместе с результатом должна сохраняться.
+Реализовать вывод статистики. Вывести топ-3 города отправки по популярности.
