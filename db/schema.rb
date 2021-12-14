@@ -10,20 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_12_220307) do
+ActiveRecord::Schema.define(version: 2021_12_14_120916) do
 
   create_table "orders", force: :cascade do |t|
     t.float "width"
     t.float "height"
     t.float "length"
     t.float "overall_volume"
-    t.string "coordinates_from"
-    t.string "coordinates_to"
     t.integer "distance"
     t.integer "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.float "weight"
+    t.string "departure_locality"
+    t.string "destination_locality"
   end
 
 end

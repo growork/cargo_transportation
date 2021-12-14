@@ -1,19 +1,39 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Orders</h1>
-
-<table>
+<table border="1">
+  <caption><h1>История заказов</h1></caption>
   <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
   </thead>
 
   <tbody>
+  <tr>
+    <th>Город отправления</th>
+    <th>Город назначения</th>
+    <th>Расстояние</th>
+    <th>Стоимость</th>
+    <th></th>
+  </tr>
+  <% @orders.each do |order| %>
+    <tr>
+      <td><%= order.departure_locality %></td>
+      <td><%= order.destination_locality %></td>
+      <td><%= order.distance %> км</td>
+      <td><%= order.price %> руб.</td>
+      <td><%= link_to 'Просмотр', order_path(order) %></td>
 
+    </tr>
+  <% end %>
   </tbody>
 </table>
 
-<br>
+<h1>ТОП-3 городов отправления</h1>
+<ol>
+<% most_popular_localities(3).each do |locality| %>
+  <li><%= locality.departure_locality %></li>
+<% end %>
+</ol>
 
-<%= link_to 'New Order', new_order_path %>
+
+
+
+<%= link_to 'Новый заказ', new_order_path %>

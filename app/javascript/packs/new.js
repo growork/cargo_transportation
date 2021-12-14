@@ -46,34 +46,40 @@ function init() {
                 var length = route.getActiveRoute().properties.get("distance");
                 document.querySelector('#order_distance').value = Math.round(length.value / 1000);
 
-                document.querySelector('#order_coordinates_from').value = routePanelControl.routePanel.state.get("from");
-                document.querySelector('#order_coordinates_to').value = routePanelControl.routePanel.state.get("to");
                 document.querySelector('#submit').removeAttribute('disabled')
 
+                // Запрос к геокодеру
+                // 1. Создаём новый объект XMLHttpRequest
+                var xhr = new XMLHttpRequest();
+
+                var pointsCoord = []
+                pointsCoord[0] = routePanelControl.routePanel.state.get("from");
+                pointsCoord[1] = routePanelControl.routePanel.state.get("to");
+
+                for (let i = 0; i <= 1; i++){
+
+                    // 2. GET-запрос на URL
+                    xhr.open('GET', 'https://geocode-maps.yandex.ru/1.x/?apikey=0af0f061-4e45-4e7f-8565-5e708931346d&format=json&geocode=' + pointsCoord[i], false);
+
+                    // 3. Отсылаем запрос
+                    xhr.send();
+
+                    // 4. Если код ответа сервера не 200, то это ошибка
+                    if (xhr.status != 200) {
+                        // обработать ошибку
+                        alert(xhr.status + ': ' + xhr.statusText); // пример вывода: 404: Not Found
+                    } else {
+                        // Записываем результат
+                        if (i === 0) {
+                            document.querySelector('#order_departure_locality').value = JSON.parse(xhr.response)["response"]["GeoObjectCollection"]["featureMember"][0]["GeoObject"]["name"];
+                        } else {
+                            document.querySelector('#order_destination_locality').value = JSON.parse(xhr.response)["response"]["GeoObjectCollection"]["featureMember"][0]["GeoObject"]["name"];
+                        }
+                    }
+                }
             }
         });
-
     });
-
-    // Вычисление общего объёма груза
-    // Получение коллекции элементов (длина, ширина, высота)
-    var elements = document.querySelectorAll('.elem-for-calculate-volume');
-
-    // Проверка длины, ширины и высоты (целое число и не пустая строка)
-    for (var i = 0; i < elements.length; i++) {
-        elements[i].oninput = function() {
-            if (
-                (/^\d{1,}(.\d{1,})?$/.test(elements[0].value) &&
-                 /^\d{1,}(.\d{1,})?$/.test(elements[1].value) &&
-                 /^\d{1,}(.\d{1,})?$/.test(elements[2].value))
-            ) {
-                document.querySelector('#order_overall_volume').value = Math.round(Number(elements[0].value) * Number(elements[1].value) * Number(elements[2].value))
-            } else {
-                document.querySelector('#order_overall_volume').value = ''
-
-            }
-        }
-    }
 }
 
 

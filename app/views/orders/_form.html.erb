@@ -22,13 +22,13 @@
     <p><%= f.number_field :length, class: 'elem-for-calculate-volume', placeholder: '0', min: 0.01, step: '0.01', required: true %></p>
 
     <%= f.label :overall_volume, 'Общий объём, м<sup>3</sup>'.html_safe %>
-    <p><%= f.number_field :overall_volume, placeholder: '0', disabled: true %></p>
+    <p><%= f.number_field :overall_volume, placeholder: '0', min: 0.01, step: '0.01', required: true %></p>
 
     <%= f.label :weight, 'Общий вес, кг' %>
     <p><%= f.number_field :weight, placeholder: '0', min: 0.01, step: '0.01', required: true %></p>
 
-    <%= f.hidden_field :coordinates_from %>
-    <%= f.hidden_field :coordinates_to %>
+    <%= f.hidden_field :departure_locality %>
+    <%= f.hidden_field :destination_locality %>
     <%= f.hidden_field :distance %>
 
     <%= f.submit 'Рассчитать', id: 'submit', disabled: true %>

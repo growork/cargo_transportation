@@ -1,4 +1,15 @@
 <p id="notice"><%= notice %></p>
+<h1> Просмотр заказа </h1>
+<p>Город отправления: <%= @order.departure_locality %></p>
+<p>Город назначения: <%= @order.destination_locality %></p>
+<p>Ширина: <%= @order.width %> м.</p>
+<p>Высота: <%= @order.height %> м.</p>
+<p>Длина: <%= @order.length %> м.</p>
+<p>Вес: <%= @order.weight %> кг.</p>
+<p>Общий объём: <%= @order.overall_volume %> м<sup>3</sup>.</p>
+<p>Расстояние: <%= @order.distance %> м.</p>
+<p>Стоимость: <%= @order.price %> р.</p>
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+<span><%= link_to 'История заказов', root_path %></span>
+<span><%= link_to 'Новый заказ', new_order_path %></span>
+<%= link_to 'Хочу JSON!', "#{order_path(@order)}.json" %>
